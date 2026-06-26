@@ -38,17 +38,18 @@ body{
     height:360px;
     background:white;
     left:50%;
+    bottom:-250px;          /* Hide almost the whole letter */
     transform:translateX(-50%);
-    bottom:30px;
     border-radius:8px;
     padding:35px;
     box-shadow:0 10px 25px rgba(0,0,0,.2);
-    transition:.9s ease;
-    z-index:1;
+    z-index:2;
+    transition:transform 1s ease .45s; /* Wait for flap to open */
 }
 
 .container.open .letter{
-    transform:translate(-50%,-180px);
+    transform:translate(-50%,-350px);
+    z-index:10;             /* Bring in front of envelope */
 }
 
 .letter h2{
@@ -83,14 +84,9 @@ body{
 /* flap */
 
 .flap{
-    position:absolute;
-    width:100%;
-    height:160px;
-    background:#b17b4d;
-    clip-path:polygon(0 0,100% 0,50% 100%);
+    z-index:9;
     transform-origin:top;
-    transition:.8s;
-    z-index:5;
+    transition:.45s;
 }
 
 .container.open .flap{
